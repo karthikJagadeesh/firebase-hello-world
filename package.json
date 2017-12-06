@@ -1,0 +1,22 @@
+{
+  "name": "firebase-hello-world",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/karthikJagadeesh/firebase-hello-world.git",
+  "author": "Karthik Jagadeesha <kartu8@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "p5": "^0.5.16"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "webpack": "^3.10.0"
+  },
+  "scripts": {
+    "build": "webpack"
+  }
+}
