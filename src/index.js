@@ -5,8 +5,8 @@ const app = p => {
   p.draw = _ => {};
 
   p.setup = _ => {
-    p.createCanvas(500, 500);
-    p.background(125);
+    p.createCanvas(p.windowWidth, p.windowHeight);
+    p.background(0);
   };
 };
 
