@@ -11,7 +11,10 @@ const config = {
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
     ]
   },
-  devtool: "source-map"
+  devtool: "source-map",
+  devServer: {
+    contentBase: "public"
+  }
 }
 
 module.exports = config;

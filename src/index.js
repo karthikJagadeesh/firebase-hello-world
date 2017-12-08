@@ -12,19 +12,24 @@ const app = p => {
     p.noFill();
     p.stroke(255);
     p.ellipse(posX, posY, 20, 20);
-  }
+  };
 
   p.draw = _ => {
     p.background(0);
     balls.forEach(ball => {
-      createStaggeringBall(ball.x, ball.y)
-    })
+      createStaggeringBall(ball.x, ball.y);
+    });
   };
 
   p.setup = _ => {
     firebase.initializeApp(config);
     database = firebase.database();
     ref = database.ref("ballsCount");
+
+    ref.on("value", data => {
+      const values = data.val();
+      balls = values.balls || [];
+    })
 
     p.createCanvas(p.windowWidth, p.windowHeight);
     p.background(0);
@@ -34,9 +39,19 @@ const app = p => {
     event.preventDefault();
     event.stopPropagation();
     if (p.mouseButton === p.LEFT) {
-      balls.push({x: p.mouseX, y: p.mouseY});
+      balls.push({ x: p.mouseX, y: p.mouseY });
+      ref.update({
+        name: "count",
+        count: balls.length,
+        balls: balls
+      });
     } else if (p.mouseButton === p.RIGHT) {
       balls.pop();
+      ref.update({
+        name: "count",
+        count: balls.length,
+        balls: balls
+      });
     }
   };
 
